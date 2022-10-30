@@ -829,7 +829,7 @@ redirect(Client0, {Method, NewLocation, Headers, Body}) ->
                            options=Opts},
 
   %% send a request to the new location
-  case send_request(Client2, RedirectRequest) of
+  case send_request(Client2, RedirectRequest, Opts0) of
     {ok,  S, H, RedirectRef} when is_reference(RedirectRef) ->
       RedirectState = hackney_manager:get_state(RedirectRef),
       RedirectState1 = case Redirect of
